@@ -75,7 +75,7 @@ class CrudController extends Controller
      * @param  \App\Models\crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function show(crud $crud)
+    public function show(crud $crud, $id)
     {
         $crud = Crud::findOrFail($id);
         return view('crud.show', compact('crud'));
@@ -88,7 +88,7 @@ class CrudController extends Controller
      * @param  \App\Models\crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function edit(crud $crud)
+    public function edit($id)
     {
         $crud = Crud::findOrFail($id);
         return view('crud.edit', compact('crud'));
@@ -102,7 +102,7 @@ class CrudController extends Controller
      * @param  \App\Models\crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, crud $crud)
+    public function update(Request $request, crud $crud, $id)
     {
         $validated = $request->validate([
             'nama' => 'required',
@@ -132,7 +132,7 @@ class CrudController extends Controller
      * @param  \App\Models\crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function destroy(crud $crud)
+    public function destroy($id)
     {
         $crud = Crud::findOrFail($id);
         $crud->delete();

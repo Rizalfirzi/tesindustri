@@ -10,6 +10,18 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          @guest
+            <a href="#" class="d-block">User</a>
+          @else
+            <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          @endguest
+        </div>
+      </div>
 <hr>
         <!-- SidebarSearch Form -->
         <div class="form-inline">
@@ -27,13 +39,19 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
+            <a href="{{url('/home')}}" class="nav-link active">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+                <li class="nav-item">
               <a href="{{ route('crud.index') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>siswa</p>
+                <i class="nav-icon fas fa-server"></i>
+                <p>Data Siswa</p>
               </a>
             </li>
-                
-            </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>
